@@ -1,1 +1,1 @@
-# site1
+Site with offline assets.
