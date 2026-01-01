@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNA Site</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+      :root {
+        --dna-bg: #09090B;
+        --dna-text: #FFFFFF;
+        --dna-accent: #3B82F6;
+        --dna-font: 'Space Grotesk', sans-serif;
+        --dna-container: 1200px;
+        --dna-radius: 8px;
+      }
+      
+      body { 
+        background: var(--dna-bg); 
+        color: var(--dna-text); 
+        font-family: var(--dna-font); 
+        margin: 0; 
+        overflow-x: hidden;
+      }
+
+      .container-dna { 
+          max-width: var(--dna-container); 
+          margin: 0 auto; 
+          padding: 0 1.5rem;
+          position: relative; 
+          height: 100%;
+      }
+      
+      .glass-nav { 
+        background: rgba(0,0,0,0.8); 
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255,255,255,0.1); 
+      }
+
+      img, video { display: block; max-width: 100%; }
+    </style>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+        window.__DNA_STATE__ = {"uiTheme":{"fonts":"#FFFFFF","darkPanel":"#0F172A","lightPanel":"#1E293B","elements":"#38BDF8","accents":"#3B82F6","interfaceScale":105,"uiFontWeight":900,"uiElementStroke":1,"uiTextBrightness":100,"uiBaseFontSize":16,"panelX":0,"panelY":0,"isFloating":false},"globalSettings":{"GL01":{"name":"Text","params":[{"id":"P1","name":"Base Size","type":"range","value":"16","min":10,"max":24},{"id":"P2","name":"Scale Ratio","type":"range","value":"1.25","min":1.1,"max":2},{"id":"P3","name":"Line Height","type":"range","value":"1.5","min":1,"max":2.5},{"id":"P4","name":"Weight","type":"range","value":"900","min":100,"max":900},{"id":"P5","name":"Tracking","type":"range","value":"-0.02","min":-0.05,"max":0.5},{"id":"P6","name":"Uppercase","type":"toggle","value":"false","min":0,"max":0},{"id":"P7","name":"Smoothing","type":"toggle","value":"true","min":0,"max":0},{"id":"P8","name":"Font Family","type":"select","value":"Space Grotesk","min":0,"max":0,"options":["Space Grotesk","Inter","Roboto","Open Sans","Manrope","Agency","Ancorli","Share Tech","Lilex","Orbitron","Google Sans","Code"]}]},"GL02":{"name":"Colors","params":[{"id":"P1","name":"Base Bg","type":"color","value":"#09090B","min":0,"max":100},{"id":"P2","name":"Surface","type":"color","value":"#18181B","min":0,"max":100},{"id":"P3","name":"Accent","type":"color","value":"#3B82F6","min":0,"max":100},{"id":"P4","name":"Text Prim","type":"color","value":"#FFFFFF","min":0,"max":100},{"id":"P5","name":"Text Sec","type":"color","value":"#A1A1AA","min":0,"max":100},{"id":"P6","name":"Border","type":"color","value":"#27272A","min":0,"max":100},{"id":"P7","name":"Inversion","type":"toggle","value":"false","min":0,"max":100},{"id":"P8","name":"BG Pattern","type":"select","value":"None","min":0,"max":100,"options":["None","Noise","Dots","Checkered","Grid"]},{"id":"P9","name":"Pattern Opacity","type":"range","value":"10","min":0,"max":100},{"id":"P10","name":"Pattern Size","type":"range","value":"20","min":4,"max":100}]},"GL03":{"name":"Spacing","params":[{"id":"P1","name":"Grid Unit","type":"range","value":"8","min":2,"max":16},{"id":"P2","name":"Gap","type":"range","value":"24","min":0,"max":100},{"id":"P3","name":"Pad X","type":"range","value":"40","min":0,"max":120},{"id":"P4","name":"Pad Y","type":"range","value":"20","min":0,"max":80},{"id":"P5","name":"Margin","type":"range","value":"0","min":0,"max":60},{"id":"P6","name":"Container","type":"range","value":"1200","min":320,"max":1920},{"id":"P7","name":"Flow","type":"range","value":"1.0","min":0.5,"max":2}]},"GL04":{"name":"Buttons","params":[{"id":"P1","name":"Size","type":"range","value":"1.0","min":0.5,"max":2},{"id":"P2","name":"Pad X","type":"range","value":"24","min":8,"max":64},{"id":"P3","name":"Pad Y","type":"range","value":"12","min":4,"max":32},{"id":"P4","name":"Typo","type":"range","value":"12","min":8,"max":24},{"id":"P5","name":"Stroke","type":"range","value":"1","min":0,"max":4},{"id":"P6","name":"Radius","type":"range","value":"4","min":0,"max":40},{"id":"P7","name":"Shadow","type":"toggle","value":"false","min":0,"max":0}]},"GL05":{"name":"Inputs","params":[{"id":"P1","name":"Height","type":"range","value":"44","min":32,"max":64},{"id":"P2","name":"Radius","type":"range","value":"4","min":0,"max":32},{"id":"P3","name":"Stroke","type":"range","value":"1","min":0,"max":3},{"id":"P4","name":"Bg Fill","type":"color","value":"#FFFFFF","min":0,"max":0},{"id":"P5","name":"Focus","type":"color","value":"#3B82F6","min":0,"max":0},{"id":"P6","name":"Placeholder","type":"color","value":"#9CA3AF","min":0,"max":0},{"id":"P7","name":"Labels","type":"color","value":"#374151","min":0,"max":0}]},"GL06":{"name":"Effects & Depth","params":[{"id":"P1","name":"Shadow Intensity","type":"range","value":"10","min":0,"max":100},{"id":"P2","name":"Shadow Blur","type":"range","value":"20","min":0,"max":60},{"id":"P3","name":"Glass Blur","type":"range","value":"0","min":0,"max":40},{"id":"P4","name":"Glass Opacity","type":"range","value":"100","min":0,"max":100},{"id":"P5","name":"Border Width","type":"range","value":"0","min":0,"max":4},{"id":"P6","name":"Border Opacity","type":"range","value":"10","min":0,"max":100},{"id":"P7","name":"Inner Glow","type":"range","value":"0","min":0,"max":100}]},"GL07":{"name":"Radius","params":[{"id":"P1","name":"Global","type":"range","value":"8","min":0,"max":40},{"id":"P2","name":"Inner","type":"range","value":"4","min":0,"max":40},{"id":"P3","name":"Outer","type":"range","value":"12","min":0,"max":40},{"id":"P4","name":"Button","type":"range","value":"4","min":0,"max":40},{"id":"P5","name":"Input","type":"range","value":"4","min":0,"max":40},{"id":"P6","name":"Card","type":"range","value":"16","min":0,"max":40},{"id":"P7","name":"Multiplier","type":"range","value":"1.0","min":0.5,"max":2}]},"GL08":{"name":"Icons","params":[{"id":"P1","name":"Size","type":"range","value":"20","min":12,"max":48},{"id":"P2","name":"Stroke","type":"range","value":"1.5","min":0.5,"max":3},{"id":"P3","name":"Optical","type":"range","value":"0","min":-2,"max":2},{"id":"P4","name":"Align","type":"range","value":"0.5","min":0,"max":1},{"id":"P5","name":"Set ID","type":"range","value":"1","min":1,"max":10},{"id":"P6","name":"Style","type":"range","value":"1","min":1,"max":5},{"id":"P7","name":"Spacing","type":"range","value":"8","min":0,"max":24}]},"GL09":{"name":"Animation","params":[{"id":"P1","name":"Duration","type":"range","value":"0.6","min":0.1,"max":2},{"id":"P2","name":"Easing","type":"range","value":"0.1","min":0,"max":0.5},{"id":"P3","name":"Entrance","type":"range","value":"20","min":0,"max":100},{"id":"P4","name":"Hover","type":"range","value":"0.95","min":0.8,"max":1.1},{"id":"P5","name":"Scroll","type":"range","value":"10","min":0,"max":40},{"id":"P6","name":"Loop","type":"range","value":"1","min":1,"max":5},{"id":"P7","name":"Physics","type":"range","value":"0.3","min":0.1,"max":1}]},"GL10":{"name":"System Meta","params":[{"id":"P1","name":"SEO","type":"range","value":"0","min":0,"max":100},{"id":"P2","name":"Analytics","type":"range","value":"0","min":0,"max":100},{"id":"P3","name":"API Root","type":"range","value":"0","min":0,"max":100},{"id":"P4","name":"Export","type":"range","value":"0","min":0,"max":100},{"id":"P5","name":"Meta","type":"range","value":"0","min":0,"max":100},{"id":"P6","name":"Environment","type":"range","value":"0","min":0,"max":100},{"id":"P7","name":"Theme Mode","type":"select","value":"Dark","min":0,"max":100,"options":["Light","Dark"]}]},"GL11":{"name":"Sticky Navigation","params":[{"id":"P1","name":"Sticky Mode","type":"toggle","value":"true","min":0,"max":100}]}},"pages":{"home":[{"id":"B0201-CORE","type":"B0201","isVisible":true,"localOverrides":{"data":{"title":"DESIGN DRIVEN BY DNA","titleTypo":{"useGlobal":true,"fontSize":"48","fontWeight":"800","letterSpacing":"-0.02","lineHeight":"1.1","uppercase":true},"description":"Configure your interface through global genetic parameters or local overrides.","descriptionTypo":{"useGlobal":true,"fontSize":"18","fontWeight":"400","letterSpacing":"0","lineHeight":"1.6","uppercase":false},"primaryBtnText":"Launch System","primaryBtnVisible":true,"secondaryBtnText":"Read Protocol","secondaryBtnVisible":true},"layout":{"height":"85vh","alignment":"center","paddingTop":"80px"},"style":{"bgFill":"","titleColor":"","descColor":""},"media":{"showImage":true,"imageUrl":"https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&q=80&w=2000","imagePosition":"right","imageOpacity":100,"imageScale":100,"shape":"square","levitation":false,"levitationSpeed":"3"},"background":{"lockBackground":false,"fixedColor":"#FFFFFF"},"btnUseGlobal":true,"btnStyles":{"size":"1.0","padX":"28","padY":"16","font":"14","stroke":"1","radius":"6","shadow":"false"},"animation":{"useGlobal":true,"duration":"0.8","stagger":"0.15","entranceY":"40"}}},{"id":"31251ea8-29d5-4926-8b37-43d2ab3c0261","type":"B0501","localOverrides":{"data":{"items":[{"id":"p1","title":"Neural Grid Alpha","url":"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80"},{"id":"p2","title":"Matrix Sync Beta","url":"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80"},{"id":"p3","title":"Vector Node Gamma","url":"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80"}]},"layout":{"columns":"3","gap":"30","paddingY":"120"},"style":{"useGlobalDNA":true,"useGlobalRadius":true,"hoverScale":"1.05","backgroundPattern":null,"bgFill":null,"borderRadius":"8px"}},"isVisible":true},{"id":"10dacd09-d288-46b7-80a3-27f943ae2dd0","type":"B0601","localOverrides":{"data":{"title":"EVOLUTIONARY ROADMAP","items":[{"date":"2023","title":"Alpha Node","desc":"Core genetic engine finalized."},{"date":"2024","title":"Matrix Integration","desc":"14-node architecture deployed."}]},"layout":{"paddingY":"120","gap":"60"},"style":{"useGlobalDNA":true,"backgroundPattern":null,"bgFill":null,"borderRadius":"8px"}},"isVisible":true}]},"currentPage":"home"};
+    </script>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // --- 1. VISUAL RENDERER (Image + Video + Shapes) ---
+        const VisualRenderer = ({ media, style }) => {
+            if (!media) return null;
+            const { imageUrl, videoUrl, type, shape } = media;
+            const src = type === 'video' ? videoUrl : imageUrl;
+            
+            if (!src) return null;
+
+            // Shape Logic
+            let aspectRatio = 'auto';
+            let borderRadius = style?.borderRadius || 'var(--dna-radius)';
+
+            if (shape === 'circle') { aspectRatio = '1 / 1'; borderRadius = '50%'; }
+            if (shape === 'square') { aspectRatio = '1 / 1'; }
+            if (shape === 'portrait') { aspectRatio = '3 / 4'; }
+            if (shape === 'landscape') { aspectRatio = '4 / 3'; }
+
+            const commonStyle = { width: '100%', height: '100%', objectFit: 'cover', ...style, borderRadius };
+
+            // Wrapper for aspect ratio
+            if (aspectRatio !== 'auto') {
+                return (
+                    <div style={{ width: '100%', aspectRatio, borderRadius, overflow: 'hidden' }}>
+                        {type === 'video' ? (
+                            <video src={src} autoPlay muted loop playsInline style={commonStyle} />
+                        ) : (
+                            <img src={src} alt="Visual" style={commonStyle} />
+                        )}
+                    </div>
+                );
+            }
+
+            // Default
+            return type === 'video' ? (
+                <video src={src} autoPlay muted loop playsInline style={style} className="shadow-xl rounded-[var(--dna-radius)]" />
+            ) : (
+                <img src={src} alt="Visual" style={style} className="shadow-xl rounded-[var(--dna-radius)]" />
+            );
+        };
+
+        const Navbar = ({ block, isSticky }) => {
+            const data = block.localOverrides?.data || {};
+            const logo = data.logoText || data.header || "LOGO";
+            return (
+                <nav className={isSticky ? 'fixed top-0 left-0 w-full z-50 glass-nav' : 'relative w-full'}>
+                    <div className="container-dna h-20 flex items-center justify-between">
+                        <div className="font-bold text-xl uppercase tracking-widest">{logo}</div>
+                        <div className="hidden md:flex gap-6 opacity-60 text-sm font-bold uppercase"></div>
+                    </div>
+                </nav>
+            );
+        };
+
+        // --- 2. OMNIBUS BLOCK RENDERER (Все 14 типов) ---
+        const MasterBlock = ({ block, index, isStickyNav }) => {
+            const overrides = block.localOverrides || {};
+            const data = overrides.data || {};
+            const media = overrides.media || {};
+            const style = overrides.style || {};
+            
+            // ИЩЕМ СПИСКИ ВЕЗДЕ (Stats, Groups, Timeline, Items...)
+            const list = data.items || data.features || data.sections || data.team || data.testimonials || data.stats || data.groups || data.steps || [];
+            const hasList = list.length > 0;
+            
+            // Проверяем наличие медиа
+            const hasVisual = (media.showImage && media.imageUrl) || (media.type === 'video' && media.videoUrl);
+            const isFooter = block.type.includes('Footer') || index === window.__DNA_STATE__.pages.home.length - 1;
+
+            const paddingClass = index === 0 && !isStickyNav ? "pt-24 pb-16" : (isFooter ? "py-12" : "py-24");
+            const textAlign = style.textAlign || (isFooter ? 'center' : 'left');
+            
+            // Сетка
+            const gridCols = list.length === 2 ? 'md:grid-cols-2' : (list.length === 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3');
+
+            return (
+                <section className={paddingClass + " border-b border-white/5 relative"}>
+                    <div className="container-dna">
+                        
+                        {/* A: SPLIT (Картинка/Видео + Текст) */}
+                        {hasVisual && !hasList && !isFooter ? (
+                            <div className={"grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"}>
+                                <div className={index % 2 !== 0 ? "lg:order-2" : "lg:order-1"}>
+                                     {data.title && <h2 className="text-4xl md:text-7xl font-black mb-6 leading-[0.9] uppercase">{data.title}</h2>}
+                                     {data.description && <p className="text-xl opacity-60 leading-relaxed mb-8">{data.description}</p>}
+                                     {(data.primaryBtnVisible || data.secondaryBtnVisible) && (
+                                        <div className="flex gap-4">
+                                            {data.primaryBtnVisible && <button className="px-8 py-4 bg-[var(--dna-accent)] text-white font-bold rounded">{data.primaryBtnText || "Action"}</button>}
+                                            {data.secondaryBtnVisible && <button className="px-8 py-4 border border-current opacity-60 hover:opacity-100 font-bold rounded">{data.secondaryBtnText || "More"}</button>}
+                                        </div>
+                                     )}
+                                </div>
+                                <div className={index % 2 !== 0 ? "lg:order-1 flex justify-center" : "lg:order-2 flex justify-center"}>
+                                    <VisualRenderer media={media} style={style} />
+                                </div>
+                            </div>
+                        ) : (
+                            /* B: FULL WIDTH (Текст / Сетки / Статистика) */
+                            <div className={isFooter ? "text-center opacity-50" : ""}>
+                                <div className={"max-w-4xl mx-auto mb-16 text-" + textAlign}>
+                                    {data.title && <h2 className={(isFooter ? "text-xl" : "text-4xl md:text-6xl") + " font-black mb-6 uppercase"}>{data.title}</h2>}
+                                    {data.description && <p className={(isFooter ? "text-sm" : "text-lg") + " opacity-60 leading-relaxed"}>{data.description}</p>}
+                                </div>
+
+                                {hasList && (
+                                    <div className={"grid grid-cols-1 gap-8 " + gridCols}>
+                                        {list.map((item, i) => (
+                                            <div key={i} className="p-8 border border-white/10 rounded-[var(--dna-radius)] bg-white/5 hover:bg-white/10 transition-colors">
+                                                {/* Иконки / Картинки внутри карточек */}
+                                                {item.imageUrl && (
+                                                    <div className="mb-6">
+                                                        <img src={item.imageUrl} className="w-16 h-16 object-cover rounded-full" />
+                                                    </div>
+                                                )}
+                                                
+                                                {/* Статистика (цифры) */}
+                                                {item.value && <div className="text-5xl font-black text-[var(--dna-accent)] mb-2">{item.value}</div>}
+                                                {item.label && <div className="text-sm opacity-50 uppercase tracking-widest">{item.label}</div>}
+
+                                                {/* Обычный контент */}
+                                                {item.title && <h3 className="text-xl font-bold mb-3 uppercase">{item.title || item.name}</h3>}
+                                                {item.desc && <p className="opacity-60 text-sm leading-relaxed">{item.desc || item.text}</p>}
+                                                
+                                                {/* Уровень (для скиллов) */}
+                                                {item.level && (
+                                                    <div className="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
+                                                        <div className="bg-[var(--dna-accent)] h-full" style={{width: item.level + '%'}}></div>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                </section>
+            );
+        };
+
+        const App = () => {
+            const state = window.__DNA_STATE__;
+            if (!state) return <div>Loading...</div>;
+
+            const blocks = state.pages?.[state.currentPage || 'home'] || [];
+            const isStickyNav = true;
+
+            return (
+                <main>
+                    {blocks.filter(b => b.isVisible).map((b, idx) => {
+                         if (b.type.includes('Navbar')) return <Navbar key={b.id} block={b} isSticky={isStickyNav} />;
+                         return <MasterBlock key={b.id} block={b} index={idx} isStickyNav={isStickyNav} />;
+                    })}
+                </main>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
